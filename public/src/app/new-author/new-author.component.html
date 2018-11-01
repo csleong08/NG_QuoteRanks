@@ -1,0 +1,20 @@
+<div style="text-align:center">
+  <p><a [routerLink]="['/']">Home</a></p>
+  <p>Add a new author: </p>
+  <p *ngIf="error" style="color:red">Your Author Name requires a minimum of three characters</p>
+  <!-- <p>{{ author | json }}</p> -->
+  <form (submit)="onSubmit()">
+    <p>{{ author.errors | json }}</p>
+    <p>{{ author.valid | json }}</p>
+    <p>Name: <input type="text" placeholder="Author Name" name="name" 
+      required
+      minlength="3"
+      [(ngModel)]="author.name"
+      #name="ngModel">
+    </p>
+    <p *ngIf="!name.valid" style="color:orange">Author name is too short</p>
+    <!-- <button *ngIf="content.valid">Edit</button> -->
+    <input type="submit" value="Submit">
+  </form>
+
+</div>

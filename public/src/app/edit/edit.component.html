@@ -1,0 +1,19 @@
+<div style="text-align:center">
+  <p><a [routerLink]="['/']">Home</a></p>
+  <p>Edit this author </p>
+  <p *ngIf="error" style="color:red">Your name requires a minimum of three characters</p>
+  <form (submit)="updateAuthor()">
+    <p>Name: <input type="text" placeholder="newauthor.name" 
+      name="name" 
+      required
+      minlength="3"
+      [(ngModel)]="newauthor.name"
+      #name="ngModel"></p>
+      <!-- <p>{{ name.errors }}</p> -->
+      <p *ngIf="!name.valid" style="color:orange">Name is too short</p>
+    <button *ngIf="name.valid">Edit</button>
+    <!-- <input type="submit" value="Submit"> -->
+  </form>
+  <button [routerLink]="['/']">Cancel</button>
+
+</div>

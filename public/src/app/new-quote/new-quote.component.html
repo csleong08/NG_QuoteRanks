@@ -1,0 +1,20 @@
+<div style="text-align:center">
+  <p><a [routerLink]="['/']">Home</a></p>
+  <p>Provide a quote by {{author.name}}: </p>
+  <p *ngIf="error" style="color:red">Your quote requires a minimum of three characters</p>
+  <form (submit)="onSubmit()">
+    <!-- <p>{{ quote | json }}</p>
+    <p>{{ errors | json }}</p> -->
+    <p>Quote: </p>
+    <input type="text" name="content" 
+    required
+    minlength="3"
+    [(ngModel)]="quote.content"
+    #content="ngModel"/>
+    <p *ngIf="!content.valid" style="color:orange">Quote is too short</p>
+    <!-- <button *ngIf="content.valid">Edit</button> -->
+    <input type="submit" value="Submit">
+  </form>
+  <button [routerLink]="['/']">Cancel</button>
+
+</div>
